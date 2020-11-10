@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>PRODUCTS</title>
+</head>
+<body>
+<div th:each="product : ${products}">
+    <a th:href="@{/products/{id}(id=${product.getId()})}"  th:text="${product.getName()}">product</a>
+</div>
+<a href="products/new">+</a>
+</body>
+</html>
