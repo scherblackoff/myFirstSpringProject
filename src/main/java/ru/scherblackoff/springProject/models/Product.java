@@ -1,10 +1,24 @@
 package ru.scherblackoff.springProject.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "price")
     private long cost;
+
 
     public Product(int id, String name, long cost) {
         this.id = id;

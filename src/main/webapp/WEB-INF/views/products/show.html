@@ -8,6 +8,6 @@
 <div th:each="product : ${products}">
     <a th:href="@{/products/{id}(id=${product.getId()})}"  th:text="${product.getName()}">product</a>
 </div>
-<a href="products/new">+</a>
+<a href="/app/products/new">+</a>
 </body>
 </html>

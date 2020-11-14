@@ -1,34 +1,27 @@
 package ru.scherblackoff.springProject.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.scherblackoff.springProject.dao.ProductsDAO;
 import ru.scherblackoff.springProject.models.Product;
+import ru.scherblackoff.springProject.services.ProductService;
 
 @Controller
 @RequestMapping("/products")
 public class ProductController {
 
-
-    private final ProductsDAO productsDAO;
-
-    @Autowired
-    public ProductController(ProductsDAO productsDAO) {
-        this.productsDAO = productsDAO;
-    }
+    private final ProductService productService = new ProductService();
 
     @GetMapping()
     public String index(Model model){
-        model.addAttribute("products", productsDAO.show());
+        model.addAttribute("products", productService.findAllProducts());
         return "products/show";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
-        model.addAttribute("product", productsDAO.getProduct(id));
+        model.addAttribute("product", productService.findProduct(id));
         return "products/product";
     }
 
@@ -40,7 +33,7 @@ public class ProductController {
 
     @PostMapping()
     public String create(@ModelAttribute("product") Product product){
-        productsDAO.save(product);
+        productService.saveProduct(product);
         return "redirect:/products";
     }
 }
