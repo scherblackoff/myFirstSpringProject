@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update product</title>
+</head>
+<body>
+<form method="POST" th:action="@{/products/edit}" th:object="${product}">
+    <input hidden th:field="*{id}"/>
+    <br>
+    Name: <input th:field="*{name}"/>
+    <br>
+    Score: <input th:field="*{price}"/>
+    <br>
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>

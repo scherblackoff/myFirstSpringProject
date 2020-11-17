@@ -10,30 +10,30 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
 
     @Column(name = "name")
     private String name;
 
     @Column(name = "price")
-    private long cost;
+    private Long price;
 
 
-    public Product(int id, String name, long cost) {
+    public Product(Long id, String name, Long price) {
         this.id = id;
         this.name = name;
-        this.cost = cost;
+        this.price = price;
     }
 
     public Product() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -45,11 +45,11 @@ public class Product {
         this.name = name;
     }
 
-    public long getCost() {
-        return cost;
+    public Long getPrice() {
+        return price;
     }
 
-    public void setCost(long cost) {
-        this.cost = cost;
+    public void setPrice(Long price) {
+        this.price = price;
     }
 }

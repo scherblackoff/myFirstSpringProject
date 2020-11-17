@@ -1,31 +1,24 @@
 package ru.scherblackoff.springProject.services;
 
-import ru.scherblackoff.springProject.DAO.ProductDAO;
 import ru.scherblackoff.springProject.models.Product;
 
 import java.util.List;
 
-public class ProductService {
+public interface ProductService {
 
-    private final ProductDAO productDAO = new ProductDAO();
+    List<Product> getAll();
 
-    public ProductService() {
-    }
+    Product get(Long id);
 
-    public Product findProduct(int id) {
-        return productDAO.findById(id);
-    }
+    Product saveOrUpdate(Product product);
 
-    public void saveProduct(Product product) {
-        productDAO.save(product);
-    }
+    List<Product> findByMinPrice(Long minPrice);
 
-    public void deleteProduct(Product product) {
-        productDAO.delete(product);
-    }
+    List<Product> findByMaxPrice(Long maxPrice);
 
+    Product remove(Product product);
 
-    public List<Product> findAllProducts() {
-        return productDAO.findAll();
-    }
+    List<Product> findByOrderByPriceAsc();
+
+    List<Product> findByOrderByPriceDesc();
 }
